@@ -1,28 +1,21 @@
 import { Cliente } from "./cliente.js";
-import { ContaCorrente } from "./ContaCorrente.js";
-import { ContaPoupanca } from "./ContaPoupanca.js";
-import { ContaSalario } from "./ContaSalario.js";
+import { Gerente } from "./Funcionarios/Gerente.js";
+import { Diretor } from "./Funcionarios/Diretor.js";
+import { SistemaAutenticacao } from "./SistemaAutenticacao.js";
 
-const cliente1 = new Cliente("Carla", 11122233309);
-const cliente2 = new Cliente("Ramon", 33366668902);
-const cliente3 = new Cliente("Dandara", 99988877752);
+const diretor = new Diretor ("Rita", 10000, 12345678933);
+diretor.cadastrarSenha("123456");
+
+const gerente = new Gerente ("Ana", 5000, 12309845681);
+gerente.cadastrarSenha("789456")
 
 
-//const contaCorrenteCarla = new ContaCorrente(0, cliente1, 1020);
-//console.log(contaCorrenteCarla);
+const diretorEstaLogado = SistemaAutenticacao.login(diretor, "123456");
+console.log(diretorEstaLogado);
 
-//contaCorrenteCarla.depositar(200);
+const gerenteEstaLogado = SistemaAutenticacao.login(gerente, "123456");
+console.log(gerenteEstaLogado);
 
-//const valorSacado = contaCorrenteCarla.sacar(50);
-//console.log(valorSacado);
-
-// MODULO 2 INTERFACES E HERANÇA
-
-//const contaPoupanca = new ContaPoupanca(50, cliente1, 1020);
-
-const contaSalario = new ContaSalario(cliente1);
-contaSalario.depositar(100);
-contaSalario.sacar(10);
-
-console.log(contaSalario);
-
+const cliente = new Cliente("Lais", 56723489011, "456");
+const clienteEstaLogado = SistemaAutenticacao.login(cliente, "456");
+console.log(clienteEstaLogado);
